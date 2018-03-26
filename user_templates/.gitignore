@@ -1,0 +1,17 @@
+.DS_Store
+
+src/.DS_Store
+.idea
+.idea/*
+
+node_modules
+node_modules/*
+
+dist
+
+._.DS_Store
+._.babelrc
+._dist
+._package-lock.json
+._src
+._static
