@@ -1,0 +1,4 @@
+B1: pull source
+B2: git checkout develops
+B3: npm install 
+ 
