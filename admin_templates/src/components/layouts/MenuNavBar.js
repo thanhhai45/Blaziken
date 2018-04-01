@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Menu, Layout, Icon } from "antd";
-import { Switch, Route, Link, NavLink } from 'react-router-dom';
+import { Menu, Icon } from "antd";
+import { NavLink } from 'react-router-dom';
 const SubMenu = Menu.SubMenu;
 class MenuNavBar extends Component {
 

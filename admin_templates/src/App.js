@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout } from 'antd';
 import { TopTemplates, BottomTemplates, MenuNavBar } from './components/layouts';
 import routers from './routes/routers';
-import Http from './utils/Http';
-import { Switch, Route, Link } from 'react-router-dom';
-const { Content, Sider, Header } = Layout;
-const SubMenu = Menu.SubMenu;
+import { Switch, Route } from 'react-router-dom';
+const { Content, Sider } = Layout;
 class App extends Component {
     state = {
         collapsed: false,

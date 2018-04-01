@@ -1,13 +1,12 @@
-import React, { Component } from 'react'
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Routes from './routes';
 import App from './App';
 import 'antd/dist/antd.css';
-const contentNode = document.getElementById('root')
+import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render( 
-    <Router>
-        <App/>
-    </Router>
-, contentNode);
+ReactDOM.render(
+<Router>
+    <App/>
+</Router>, document.getElementById('root'));
+registerServiceWorker();

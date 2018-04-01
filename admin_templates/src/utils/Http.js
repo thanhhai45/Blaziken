@@ -13,7 +13,8 @@ export default class Http {
                 request = axios.put(url, params);
                 break;
             case "DELETE":
-                request = axios.delete(url, params);    
+                request = axios.delete(url, params);   
+                break; 
             default:
                 break;
         }
@@ -27,7 +28,7 @@ export default class Http {
                 }
             })
             .catch((error) => {
-                return Promise.reject(result);
+                return Promise.reject(error);
             })
     }
 }
