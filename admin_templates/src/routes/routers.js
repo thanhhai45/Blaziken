@@ -1,28 +1,21 @@
-import Demo from './../components/authorize';
-import Demo1 from './../components/categories';
-import Demo2 from './../components/dashboard';
-import Demo3 from './../components/products';
-
+import CategoryList from './../components/categories';
+import ProductList from './../components/products';
+import Author from './../components/authorize';
 const routers = [
     {
         path: '/',
         exact: true,
-        component: Demo2
+        component: ProductList
     },
     {
         path: '/category',
         exact: true,
-        component: Demo1
+        component: CategoryList
     },
     {
         path: '/author',
         exact: true,
-        component: Demo
-    },
-    {
-        path: '/product',
-        exact: true,
-        component: Demo3
+        component: Author
     },
 ];
 

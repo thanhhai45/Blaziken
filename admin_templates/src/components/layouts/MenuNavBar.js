@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Menu, Layout, Icon } from "antd";
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, Link, NavLink } from 'react-router-dom';
 const SubMenu = Menu.SubMenu;
 class MenuNavBar extends Component {
 
@@ -9,15 +9,15 @@ class MenuNavBar extends Component {
             <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                 <Menu.Item key="1">
                     <Icon type="pie-chart" />
-                    <span><Link to='/' style={{color: '#fff'}}>Dashboard</Link></span>
+                    <span><NavLink to='/' style={{color: '#fff'}}>Dashboard</NavLink></span>
                 </Menu.Item>
                 <Menu.Item key="2">
                     <Icon type="setting" />
-                    <span>Settings</span>
+                    <span><NavLink to="/author" style={{color: '#fff'}}>Settings</NavLink></span>
                 </Menu.Item>
                 <Menu.Item key="3">
                     <Icon type="desktop" />
-                    <span><Link to='/category' style={{color: '#fff'}}>Category</Link></span>
+                    <span><NavLink to='/category' style={{color: '#fff'}}>Category</NavLink></span>
                 </Menu.Item>
                 <SubMenu
                     key="sub1"

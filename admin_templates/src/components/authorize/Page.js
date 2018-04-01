@@ -3,7 +3,7 @@ export default class Page extends Component {
   render() {
     return (
       <div>
-        
+          Hello Author;
       </div>
     )
   }

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import { TopTemplates, BottomTemplates, MenuNavBar } from './components/layouts';
-import CategoryList from './components/categories';
-import ProductList from './components/products';
-
+import routers from './routes/routers';
+import Http from './utils/Http';
 import { Switch, Route, Link } from 'react-router-dom';
 const { Content, Sider, Header } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -16,6 +15,9 @@ class App extends Component {
         this.setState({ collapsed });
     }
     render() {
+        const Routers = routers.map((route, index) => 
+            <Route key={index} exact path={route.path} component={route.component}/>
+        );
         return (
             <Layout style={{ minHeight: '100vh' }}>
                 <Sider
@@ -31,8 +33,7 @@ class App extends Component {
 
                     <Content style={{ margin: '0 16px' }}>
                     <Switch>
-                        <Route exact path='/' component={ProductList}/>
-                        <Route path='/category' component={CategoryList}/>
+                        { Routers }
                     </Switch>  
                     </Content>
                     <BottomTemplates/>
