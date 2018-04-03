@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Login from './components/Login';
 export default class Page extends Component {
   render() {
     return (
       <div>
-          Hello Author;
+          <Login/>
       </div>
     )
   }

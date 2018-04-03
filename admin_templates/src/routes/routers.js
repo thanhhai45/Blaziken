@@ -12,11 +12,11 @@ const routers = [
         exact: true,
         component: CategoryList
     },
-    {
-        path: '/author',
-        exact: true,
-        component: Author
-    },
+    // {
+    //     path: '/author',
+    //     exact: true,
+    //     component: Author
+    // },
 ];
 
 export default routers;
