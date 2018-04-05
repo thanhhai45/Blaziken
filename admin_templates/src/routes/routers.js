@@ -1,6 +1,7 @@
 import CategoryList from './../components/categories';
 import ProductList from './../components/products';
 import Author from './../components/authorize';
+import NotFound from './../components/layouts/NotFound';
 const routers = [
     {
         path: '/',
@@ -12,11 +13,11 @@ const routers = [
         exact: true,
         component: CategoryList
     },
-    // {
-    //     path: '/author',
-    //     exact: true,
-    //     component: Author
-    // },
+     {
+         path: '',
+         exact: true,
+         component: NotFound
+     },
 ];
 
 export default routers;

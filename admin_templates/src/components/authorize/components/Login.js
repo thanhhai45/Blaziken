@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import logo_login from './../../../images/logo-login.png'
 import { Form, Icon, Input, Button, Checkbox, Row, Col } from 'antd';
-import { Redirect } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
+import App from'./../../../App'
 const FormItem = Form.Item;
 
 class Login extends Component {
@@ -13,14 +14,15 @@ class Login extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        localStorage.setItem('user', { 'username': values });
+        localStorage.setItem('user', JSON.stringify({ values }));
         console.log('Received values of form: ', values);
-        //const { from } = this.props.location.state || { from: { pathname: "/" } };
-        //return <Redirect to={from} />;
       }
     });
   }
   render() {
+    if (localStorage.getItem("user")) { 
+      return <App/>
+    }
     const { getFieldDecorator } = this.props.form;
     return (
       <Row type="flex" justify="center" align="middle">
@@ -52,7 +54,7 @@ class Login extends Component {
                 <a className="login-form-forgot" href="">Forgot password</a>
                 <Button type="primary" htmlType="submit" className="login-form-button">
                   Log in
-                                 </Button>
+                 </Button>
               </FormItem>
             </Form>
           </Row>
