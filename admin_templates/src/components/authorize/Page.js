@@ -4,7 +4,7 @@ export default class Page extends Component {
   render() {
     return (
       <div>
-          <Login/>
+          <Login onLoginSuccess={this.props.onLoginSuccess}/>
       </div>
     )
   }
