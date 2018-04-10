@@ -27,17 +27,17 @@ class Login extends Component {
         formData.append('password', values.password);
         Http.RequestAPI("POST", "http://localhost:3001/v1/admin_staffs/sign_in",
           formData)
-          .then(result => {
-            if (result.status === 200 && result.statusText === "OK") {
-              localStorage.setItem('auth_token', JSON.stringify({ result }));
-              if(localStorage.getItem("auth_token")){
-                this.onLoginSuccess();
-              }
-            }
-          })
-          .catch(error => {
-            console.log(error);
-          })
+			.then(result => {
+				if (result.status === 200 && result.statusText === "OK") {
+					localStorage.setItem('auth_token', JSON.stringify({ result }));
+					if(localStorage.getItem("auth_token")){
+						this.onLoginSuccess();
+					}
+				}
+			})
+			.catch(error => {
+				console.log(error);
+			})
       }
     });
   }
