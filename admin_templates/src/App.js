@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Layout } from 'antd';
 import { TopTemplates, BottomTemplates, MenuNavBar } from './components/layouts';
 import routers from './routes/routers';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Author from './components/authorize';
 const { Content, Sider } = Layout;
 class App extends Component {
@@ -10,6 +10,7 @@ class App extends Component {
     super(props);
     this.state = {
       collapsed: false,
+      token : false,
     };
   }
   onCollapse = (collapsed) => {
@@ -17,13 +18,19 @@ class App extends Component {
     this.setState({ collapsed });
   }
 
+  onLoginSuccess = () => {
+    this.setState({token: true});
+  }
+
+  onLogoutSuccess = () => {
+    this.setState({token: false});
+  }
+
   render() {
-    console.log("localStorage",localStorage.getItem("user"))
     const Routers = routers.map((route, index) =>
       <Route key={index} exact ={route.exact} path={route.path} component={route.component} />
     );
-
-    const layout = localStorage.getItem("user") ?
+    const layout =  this.state.token === true||localStorage.getItem("auth_token")?
       <Layout style={{ minHeight: '100vh' }}>
         <Sider
           collapsible
@@ -34,7 +41,7 @@ class App extends Component {
           <MenuNavBar />
         </Sider>
         <Layout>
-          <TopTemplates />
+          <TopTemplates onLogoutSuccess={this.onLogoutSuccess} />
 
           <Content style={{ margin: '0 16px' }}>
             <Switch>
@@ -44,9 +51,7 @@ class App extends Component {
           <BottomTemplates />
         </Layout>
       </Layout>
-      :  <Route path='/' children={(props) => {
-        return <Author />
-      }} />;
+      : <Author onLoginSuccess={this.onLoginSuccess} />
     return layout;
 
   }

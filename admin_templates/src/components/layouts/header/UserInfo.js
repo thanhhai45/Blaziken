@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 import { Menu, Dropdown, Icon, Avatar } from 'antd';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 export default class UserInfo extends Component {
-    removeAuthentication(){
-        localStorage.removeItem("user");
-        console.log("logout")
+    onLogoutSuccess=()=>{
+        this.props.onLogoutSuccess();
+    }
+
+    removeAuthentication=(e)=>{
+        e.preventDefault();
+        localStorage.removeItem("auth_token");
+        this.onLogoutSuccess();
     }
 
     render() {
-        // if(localStorage.getItem("user")){
-        //     return <Redirect />
-        // }
         const menu = (
             <Menu>
                 <Menu.Item key="0">

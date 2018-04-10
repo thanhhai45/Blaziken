@@ -9,7 +9,7 @@ class TopTemplates extends Component {
             <Header style={{background: '#fff', marginBottom: "20px"}}>
                 <Row>
                     <Col span={20}><SearchForm/></Col>
-                    <Col span={4}><UserInfo/></Col>
+                    <Col span={4}><UserInfo onLogoutSuccess={this.props.onLogoutSuccess}/></Col>
                 </Row>
             </Header>
         )

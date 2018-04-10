@@ -1,6 +1,5 @@
 import CategoryList from './../components/categories';
 import ProductList from './../components/products';
-import Author from './../components/authorize';
 import NotFound from './../components/layouts/NotFound';
 const routers = [
     {
