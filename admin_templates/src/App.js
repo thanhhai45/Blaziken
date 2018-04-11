@@ -32,7 +32,7 @@ class App extends Component {
 		const Routers = routers.map((route, index) =>
 			<Route key={index} exact={route.exact} path={route.path} component={route.component} />
 		);
-		const layout = //this.state.token === true || localStorage.getItem("auth_token") ?
+		const layout = this.state.token === true || localStorage.getItem("auth_token") ?
 			<Layout style={{ minHeight: '100vh' }}>
 				<Sider
 					collapsible
@@ -53,7 +53,7 @@ class App extends Component {
 					<BottomTemplates />
 				</Layout>
 			</Layout>
-			// : <Author onLoginSuccess={this.onLoginSuccess} />
+			 : <Author onLoginSuccess={this.onLoginSuccess} />
 		return layout;
 
 	}
