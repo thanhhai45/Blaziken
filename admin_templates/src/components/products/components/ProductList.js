@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, Button, Icon, Tooltip } from 'antd';
+// import {  } from 'antd';
 import { TableDataSource } from './../../../commons/Table';
 import { EditIcon, DeleteIcon } from './../../../commons/Button';
 import Http from './../../../utils/Http';
@@ -9,16 +9,6 @@ const columns = [{
 	key: 'id',
 	fixed: 'left'
 }, {
-	title: 'Price',
-	dataIndex: 'price',
-	key: 'price',
-}, 
-{
-	title: 'Price',
-	dataIndex: 'price',
-	key: 'price',
-},
-{
 	title: 'Price',
 	dataIndex: 'price',
 	key: 'price',
@@ -37,11 +27,6 @@ const columns = [{
 { title: 'Column 7', dataIndex: 'price', key: '7' },
 { title: 'Column 8', dataIndex: 'price', key: '8' },
 
-{
-	title: 'Address',
-	dataIndex: 'address',
-	key: 'address',
-},
 {
     title: 'Action',
     key: 'operation',
