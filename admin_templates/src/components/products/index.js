@@ -1,3 +1,12 @@
 import Page from './Page';
+import { connect } from 'react-redux';
 
-export default Page;
+const mapStateToProps = state => {
+    const {token} = state.login
+
+    return {
+        token: Object.assign({}, token)
+    }
+}
+
+export default connect(mapStateToProps)(Page);

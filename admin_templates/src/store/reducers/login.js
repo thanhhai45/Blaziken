@@ -13,9 +13,9 @@ const reducer = (state = initialState, { type, payload = null}) => {
 }
 
 function add(state, payload) {
-    if (state.token.length === 0) {
+    if (state.token.length !== 0) {
         const data = [...state.token, payload];
-        return Object.assign({}, state, {dat});
+        return Object.assign({}, state, {data});
     }
 }
 

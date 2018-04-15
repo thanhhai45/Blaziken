@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { Layout } from 'antd';
 import { TopTemplates, BottomTemplates, MenuNavBar } from './components/layouts';
 import routers from './routes/routers';
@@ -57,5 +57,13 @@ class App extends Component {
 		return layout;
 
 	}
+	
+	componentDidMount() {
+		// this.props.dispatch(authorized.add("abc"));
+	}
 }
-export default App;
+const mapStateToProp = state => {
+    return {
+    }
+}
+export default connect(mapStateToProp)(App);

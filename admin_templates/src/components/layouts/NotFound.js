@@ -6,7 +6,7 @@ class NotFound extends Component {
         return (
             <Row type="flex" justify="center" align="middle">
                 <Col xl={17}>
-                <img src={not_found} alt="not-found-image"/>
+                <img src={not_found} alt="not-found"/>
                 </Col>
             </Row>
         );
