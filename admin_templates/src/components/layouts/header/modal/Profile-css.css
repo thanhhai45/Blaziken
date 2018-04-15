@@ -5,3 +5,9 @@
     background: #F7FAFB;
     border-radius: 10px;
 }
+.ant-modal-header{
+    background:#1890ff !important
+}
+.ant-modal-title{
+    color: white !important
+}

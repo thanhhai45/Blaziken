@@ -41,7 +41,8 @@ class Login extends Component {
             }
           })
           .catch(error => {
-            var objError=JSON.parse(error.request.responseText);
+            var objError=JSON.stringify(error.request.responseText);
+            console.log(objError)
             if(objError){
               this.setState({
                 validateStatus: 'error',
