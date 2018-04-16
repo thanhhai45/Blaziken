@@ -20,8 +20,14 @@ export default class UserInfo extends Component {
             visible:true
         })
     }
+    closeModal=()=>{
+        this.setState({
+            visible:false
+        })
+    }
 
     render() {
+        console.log(this.state.visible)
         const menu = (
             <Menu>
                 <Menu.Item key="0">
@@ -36,7 +42,7 @@ export default class UserInfo extends Component {
         );
         return (
             <div>
-                <Profile visible={this.state.visible}/>
+                <Profile visible={this.state.visible} closeModal={this.closeModal}/>
                 <Avatar size="large" icon="user" />
                 <Dropdown overlay={menu} trigger={['click']}>
                     <Link className="ant-dropdown-link" to="#" style={{ textDecoration: 'none' }} >

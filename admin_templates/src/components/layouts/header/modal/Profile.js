@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
-import { Modal, Button, Avatar, Row, Col, Tag, Form, Input, Select } from 'antd';
+import { Modal, Button, Avatar, Row, Col, Tag, Form, Input, Select, Icon, Upload } from 'antd';
 import './Profile-css.css';
 import { EditIcon } from './../../../../commons/Button'
+import logo_upload from './../../../../images/logo-upload.png'
 const FormItem = Form.Item;
 class Profile extends Component {
   state = {
     loading: false,
     visible: false,
     editDisable: true
-  }
-  showModal = () => {
-    this.setState({
-      visible: this.props.visible,
-    });
-
   }
   handleOk = (e) => {
     this.setState({
@@ -29,6 +24,7 @@ class Profile extends Component {
       visible: false,
       editDisable: true
     });
+    this.props.closeModal();
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.visible) {
@@ -93,7 +89,12 @@ class Profile extends Component {
           ]}
         >
           <Row type="flex" gutter={16} justify="center" align="middle" className='content-top'>
-            <Col span={6}><Avatar style={{ width: '80px', height: '80px', lineHeight: '40px', borderRadius: '20px', background: 'red' }} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" /></Col>
+            <Col span={6}>
+              <Upload className="upload">
+                <Avatar className="person" style={{ width: '80px', height: '80px', lineHeight: '40px', borderRadius: '20px'}} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                <Avatar className="img-upload" style={{ width: '75px', height: '75px', lineHeight: '40px', borderRadius: '20px'}} src={logo_upload} />
+              </Upload>
+            </Col>
             <Col span={18}>
               <p style={{ fontFamily: "Times New Roman", fontWeight: 'bold' }}>LÊ THANH HẢI&nbsp;<span onClick={this.editVisible}><EditIcon title="Edit Profile" style={{ color: 'green', cursor: 'pointer' }} /></span></p>
               <span>Created&nbsp;<Tag color="green">1/4/2018</Tag></span>
