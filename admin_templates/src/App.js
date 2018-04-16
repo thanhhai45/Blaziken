@@ -33,7 +33,7 @@ class App extends Component {
 			<Route key={index} exact={route.exact} path={route.path} component={route.component} />
 		);
 		const layout = this.state.token === true || localStorage.getItem("auth_token") ?
-			<Layout style={{ minHeight: '100vh' }}>
+		<Layout style={{ minHeight: '100vh' }}>
 				<Sider
 					collapsible
 					collapsed={this.state.collapsed}
