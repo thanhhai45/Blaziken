@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { Modal, Button, Avatar, Row, Col, Tag, Icon, Form, Input, Select, DatePicker } from 'antd';
+import { Modal, Button, Avatar, Row, Col, Tag, Form, Input, Select } from 'antd';
 import './Profile-css.css';
 import { EditIcon } from './../../../../commons/Button'
 const FormItem = Form.Item;
-function onChange(date, dateString) {
-  console.log(date, dateString);
-}
 class Profile extends Component {
   state = {
     loading: false,
@@ -85,10 +82,12 @@ class Profile extends Component {
       <div>
         <Modal
           title="My Mentor"
-          visible={this.state.visible}
+          visible={visible}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
           footer={[
             <Button key="back" onClick={this.handleCancel}>Cancel</Button>,
-            <Button key="submit" disabled={this.state.editDisable ? this.state.editDisable : this.hasErrors(getFieldsError())} type="primary" loading={loading} onClick={this.handleSubmit}>
+            <Button key="submit" disabled={editDisable ? editDisable : this.hasErrors(getFieldsError())} type="primary" loading={loading} onClick={this.handleSubmit}>
               Submit
             </Button>,
           ]}
@@ -107,14 +106,14 @@ class Profile extends Component {
                 {getFieldDecorator('role', {
                   rules: [{ required: true, message: 'The input is not valid Role!' }]
                 })(
-                  <Input disabled={this.state.editDisable} />
+                  <Input disabled={editDisable} />
                 )}
               </FormItem>
               <FormItem {...formItemLayout} label="Status">
                 {getFieldDecorator('status', {
                   rules: [{ required: true, message: 'The input is not valid Status!' }]
                 })(
-                  <Input disabled={this.state.editDisable} />
+                  <Input disabled={editDisable} />
                 )}
               </FormItem>
               <FormItem {...formItemLayout} label="Featured">
@@ -123,7 +122,7 @@ class Profile extends Component {
                   mode="multiple"
                   style={{ width: '100%' }}
                   placeholder="Please select"
-                  disabled={this.state.editDisable}
+                  disabled={editDisable}
                   {...getFieldProps('select', {
                     initialValue: ["1", "2"],
                     rules: [{ required: true, message: "The Featured isn't empty!" }],
