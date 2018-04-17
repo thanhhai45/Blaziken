@@ -27,7 +27,6 @@ export default class UserInfo extends Component {
     }
 
     render() {
-        console.log(this.state.visible)
         const menu = (
             <Menu>
                 <Menu.Item key="0">

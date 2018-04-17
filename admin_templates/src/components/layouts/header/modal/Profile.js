@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Button, Avatar, Row, Col, Tag, Form, Input, Select, Icon, Upload } from 'antd';
 import './Profile-css.css';
+import UploadFile from './upload/UploadFile';
 import { EditIcon } from './../../../../commons/Button'
 import logo_upload from './../../../../images/logo-upload.png'
 const FormItem = Form.Item;
@@ -90,10 +91,7 @@ class Profile extends Component {
         >
           <Row type="flex" gutter={16} justify="center" align="middle" className='content-top'>
             <Col span={6}>
-              <Upload className="upload">
-                <Avatar className="person" style={{ width: '80px', height: '80px', lineHeight: '40px', borderRadius: '20px'}} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                <Avatar className="img-upload" style={{ width: '75px', height: '75px', lineHeight: '40px', borderRadius: '20px'}} src={logo_upload} />
-              </Upload>
+             <UploadFile/>
             </Col>
             <Col span={18}>
               <p style={{ fontFamily: "Times New Roman", fontWeight: 'bold' }}>LÊ THANH HẢI&nbsp;<span onClick={this.editVisible}><EditIcon title="Edit Profile" style={{ color: 'green', cursor: 'pointer' }} /></span></p>
