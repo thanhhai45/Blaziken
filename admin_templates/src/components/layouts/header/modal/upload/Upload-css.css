@@ -9,6 +9,14 @@
     line-height: 40px;
     border-radius: 20px;
 }
+.img-upload-none{
+    display: none !important;
+	opacity:0.3;
+	width: 75px !important;
+    height: 75px !important;
+    line-height: 40px;
+    border-radius: 20px;
+}
 .person {
     width: 80px !important;
     height: 80px !important;

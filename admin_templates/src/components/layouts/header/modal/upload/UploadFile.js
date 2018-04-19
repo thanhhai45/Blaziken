@@ -22,7 +22,7 @@ function getBase64(img, callback) {
 class UploadFile extends Component {
   state = {
     imageUrl: '',
-    showUpload: false
+    uploadStatus: false,
   }
   beforeUpload = (file) => {
     const fileType = verifyFileType(file);
@@ -33,30 +33,36 @@ class UploadFile extends Component {
     if (!imgSize) {
       message.error('Image must smaller than 2MB');
     }
-    this.setState({
-      showUpload: fileType && imgSize
-    })
     return fileType && imgSize;
   }
 
-  handleUploadFile = (info) => {
-    console.log(info.file.status)
-    if (info.file.status === 'done') {
-      getBase64(info.file.originFileObj, imageUrl => this.setState({
+  handleUploadFile = (fileUpload) => {
+    var fileList = fileUpload.fileList.slice(-1);
+    if (fileUpload.file.status === 'done') {
+      getBase64(fileUpload.file.originFileObj, imageUrl => this.setState({
         imageUrl,
       }));
+      this.props.uploadSuccess();
+    } else {
+      this.props.uploadError();
     }
+    this.setState({
+      fileList
+    })
   }
 
   render() {
-    const { showUpload } = this.state;
+    const { fileList, previewImage, imageUrl, uploadStatus } = this.state;
+    const { disabled } = this.props;
     return (
-      <Upload className="upload"
+      <Upload className={!disabled ? "upload" : ''}
         name="uploadImage"
-        showUploadList={showUpload}
+        onPreview={this.handlePreview}
         beforeUpload={this.beforeUpload}
         onChange={this.handleUploadFile}
+        fileList={fileList}
         action="//jsonplaceholder.typicode.com/posts/"
+        disabled={disabled}
       >
         <Avatar className="person" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
         <Avatar className="img-upload" src={logo_upload} />

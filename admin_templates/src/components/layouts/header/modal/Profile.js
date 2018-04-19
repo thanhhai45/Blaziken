@@ -9,7 +9,8 @@ class Profile extends Component {
   state = {
     loading: false,
     visible: false,
-    editDisable: true
+    editDisable: true,
+    uploadStatus: false
   }
   handleOk = (e) => {
     this.setState({
@@ -50,15 +51,21 @@ class Profile extends Component {
     const form = this.props.form;
     this.setState({
       loading: true,
+      uploadStatus: true
     });
     form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
       }
     });
-    setTimeout(() => {
-      this.setState({ loading: false, visible: false });
-    }, 1000);
+    // setTimeout(() => {
+    //   this.setState({ loading: false, visible: false });
+    // }, 1000);
+  }
+  uploadError = () => {
+    this.setState({
+      editDisable: true
+    })
   }
   render() {
     const Option = Select.Option;
@@ -91,7 +98,7 @@ class Profile extends Component {
         >
           <Row type="flex" gutter={16} justify="center" align="middle" className='content-top'>
             <Col span={6}>
-             <UploadFile/>
+              <UploadFile uploadSuccess={this.editVisible} uploadError={this.uploadError} disabled={editDisable}/>
             </Col>
             <Col span={18}>
               <p style={{ fontFamily: "Times New Roman", fontWeight: 'bold' }}>LÊ THANH HẢI&nbsp;<span onClick={this.editVisible}><EditIcon title="Edit Profile" style={{ color: 'green', cursor: 'pointer' }} /></span></p>
