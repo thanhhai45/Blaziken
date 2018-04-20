@@ -46,7 +46,7 @@ class Login extends Component {
             if(objError){
               this.setState({
                 validateStatus: 'error',
-                help: objError.errors[0]
+                help: objError.messages[0]
               })
             }
           })

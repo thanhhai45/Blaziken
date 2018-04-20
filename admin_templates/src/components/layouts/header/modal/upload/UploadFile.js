@@ -12,7 +12,6 @@ function verifyFileType(file) {
   }
 }
 
-
 function getBase64(img, callback) {
   const reader = new FileReader();
   reader.addEventListener('load', () => callback(reader.result));
@@ -38,10 +37,13 @@ class UploadFile extends Component {
 
   handleUploadFile = (fileUpload) => {
     var fileList = fileUpload.fileList.slice(-1);
+    const { imageUrl } = this.state
     if (fileUpload.file.status === 'done') {
       getBase64(fileUpload.file.originFileObj, imageUrl => this.setState({
         imageUrl,
       }));
+      console.log(imageUrl.length)
+      this.props.formData.append("imageUrl", 1>0 ? 'have image': 'No such image');
       this.props.uploadSuccess();
     } else {
       this.props.uploadError();

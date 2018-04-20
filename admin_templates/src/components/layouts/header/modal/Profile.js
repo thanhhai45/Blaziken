@@ -10,7 +10,8 @@ class Profile extends Component {
     loading: false,
     visible: false,
     editDisable: true,
-    uploadStatus: false
+    uploadStatus: false,
+    formData: new FormData()
   }
   handleOk = (e) => {
     this.setState({
@@ -48,6 +49,7 @@ class Profile extends Component {
     return Object.keys(fieldsError).some(field => fieldsError[field]);
   }
   handleSubmit = () => {
+    const { formData } = this.state;
     const form = this.props.form;
     this.setState({
       loading: true,
@@ -55,9 +57,15 @@ class Profile extends Component {
     });
     form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        formData.append("role", values.role)
+        formData.append("status", values.status)
+        formData.append("featured", values.featured)
+        console.log(formData.get("imageUrl"))
       }
     });
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 1000);
     // setTimeout(() => {
     //   this.setState({ loading: false, visible: false });
     // }, 1000);
@@ -70,7 +78,7 @@ class Profile extends Component {
   render() {
     const Option = Select.Option;
     const { getFieldDecorator, getFieldsError, getFieldProps } = this.props.form;
-    const { visible, loading, editDisable } = this.state;
+    const { visible, loading, editDisable, formData } = this.state;
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -98,7 +106,7 @@ class Profile extends Component {
         >
           <Row type="flex" gutter={16} justify="center" align="middle" className='content-top'>
             <Col span={6}>
-              <UploadFile uploadSuccess={this.editVisible} uploadError={this.uploadError} disabled={editDisable}/>
+              <UploadFile uploadSuccess={this.editVisible} uploadError={this.uploadError} disabled={editDisable} formData={formData} />
             </Col>
             <Col span={18}>
               <p style={{ fontFamily: "Times New Roman", fontWeight: 'bold' }}>LÊ THANH HẢI&nbsp;<span onClick={this.editVisible}><EditIcon title="Edit Profile" style={{ color: 'green', cursor: 'pointer' }} /></span></p>
@@ -129,7 +137,7 @@ class Profile extends Component {
                   style={{ width: '100%' }}
                   placeholder="Please select"
                   disabled={editDisable}
-                  {...getFieldProps('select', {
+                  {...getFieldProps('featured', {
                     initialValue: ["1", "2"],
                     rules: [{ required: true, message: "The Featured isn't empty!" }],
                   })}
